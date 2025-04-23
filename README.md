@@ -5,8 +5,7 @@
 To develop a Django application to store and retrieve data from a Movies Database using Object Relational Mapping(ORM).
 
 ## ENTITY RELATIONSHIP DIAGRAM
-
-![alt text](<er diagram.jpg>)
+![alt text](<WhatsApp Image 2025-04-23 at 21.22.36_9207c94a.jpg>)
 
 
 ## DESIGN STEPS
@@ -25,31 +24,30 @@ Execute Django admin and create details for 10 books
 
 ## PROGRAM
 ```
+admin.py
+
+from django.contrib import admin
+from .models import Movies,MoviesAdmin
+admin.site.register(Movies, MoviesAdmin)
+models.py
+
 from django.db import models
 from django.contrib import admin
-class BankLoan (models.Model):
-    loan_id=models.IntegerField(primary_key=True)
-    loan_type=models.CharField(max_length=30)
-    loan_amt=models.IntegerField()
-    cust_acno=models.IntegerField()
-    cust_name=models.CharField(max_length=50)
-   
- 
-class BankLoanAdmin(admin.ModelAdmin):
-    list_display=('loan_id','cust_name','loan_type','loan_amt','cust_acno')
-```
-```
-from django.contrib import admin
-from .models import BankLoan,BankLoanAdmin
-admin.site.register(BankLoan,BankLoanAdmin)
+class Movies(models.Model):
+    User_id = models.CharField(max_length=20, help_text="User ID")
+    User_Name = models.CharField(max_length=100)
+    email_id = models.EmailField()
+    No_of_seats = models.IntegerField()
+    Movie_Name=models.CharField(max_length=20)
+    Show_DateTime=models.DateTimeField()
+    Phone_Number=models.CharField(max_length=10, help_text="Phone number")
+class MoviesAdmin(admin.ModelAdmin):
+    list_display = ('User_id', 'User_Name', 'email_id', 'No_of_seats', 'Movie_Name','Show_DateTime','Phone_Number')
+
 ```
 
 
 ## OUTPUT
-
-![alt text](s1.png)
-
-![alt text](s2.png)
-
+![alt text](<Screenshot (6).png>)
 ## RESULT
 Thus the program for creating movies database using ORM hass been executed successfully
